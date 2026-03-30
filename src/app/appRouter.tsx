@@ -11,11 +11,11 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => replace("/settings"),
+        loader: () => replace('/quiz/new'),
       },
-      { path: "/settings", element: <SettingsPage /> },
-      { path: "/quiz", element: <QuizPage /> },
-      { path: "*", element: <NotFound /> },
+      { path: '/quiz/new', element: <SettingsPage /> },
+      { path: '/quiz', element: <QuizPage /> },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ]);
