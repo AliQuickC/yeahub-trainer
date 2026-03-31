@@ -19,4 +19,4 @@ export interface SkillsResponse {
   total: number;
 }
 
-export type SkillsParamsType = { limit?: string };
+export type SkillsParamsType = { limit?: string; specializations?: string };

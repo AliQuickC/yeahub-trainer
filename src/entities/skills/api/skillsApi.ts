@@ -3,13 +3,14 @@ import type { SkillsParamsType, SkillsResponse } from '../model/types';
 
 export const skillsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getskillsList: builder.query<SkillsResponse, SkillsParamsType>({
+    getSkillsList: builder.query<SkillsResponse, SkillsParamsType>({
       query: (params) => {
-        const { limit = '65' } = params || {};
+        const { limit = '65', specializations } = params || {};
         return {
           url: 'skills',
           params: {
             limit,
+            specializations,
           },
         };
       },
@@ -18,4 +19,4 @@ export const skillsApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetskillsListQuery } = skillsApi;
+export const { useGetSkillsListQuery } = skillsApi;
