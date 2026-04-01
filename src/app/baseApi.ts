@@ -4,7 +4,7 @@ import { base_url } from '../shared/const/const';
 const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({ baseUrl: base_url }),
-  tagTypes: ['Specializations', 'Skills'],
+  tagTypes: ['Specializations', 'Skills', 'questions'],
   endpoints: () => ({}),
 });
 

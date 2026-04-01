@@ -1,6 +1,6 @@
 import s from './SettingsPage.module.sass';
 import { Filters } from '../../../widgets/questions';
-import { Button } from '../../../shared/ui/StartButton/Button';
+import { Button } from '../../../shared/ui/Button/Button';
 
 export function SettingsPage() {
   return (
