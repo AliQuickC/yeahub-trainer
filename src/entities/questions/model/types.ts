@@ -26,3 +26,18 @@ export type QuizParamsType = {
   complexity?: string;
   limit?: string;
 };
+
+export type QuizQuestion = Pick<
+  QuestionsResponseData,
+  'id' | 'title' | 'shortAnswer'
+> & {
+  isKnow: boolean | null;
+};
+
+export interface QuizParams {
+  specializations: string;
+  skills?: string;
+  complexity?: string;
+  limit?: string;
+}
+

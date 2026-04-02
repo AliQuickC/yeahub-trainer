@@ -2,23 +2,31 @@ import s from './Progress.module.sass';
 
 interface Props {
   title: string;
-  value: number;
+  progressValue: number;
+  currentValue: number;
   totalValue: number;
 }
 
-export function Progress({ title, value, totalValue }: Props) {
+export function Progress({
+  title,
+  progressValue,
+  currentValue,
+  totalValue,
+}: Props) {
+    const progressLine = progressValue / (totalValue / 100);
+
   return (
     <div className={s.Progress}>
       <div className={s.ProgressWrapper}>
         <h2 className={s.ProgressTitle}>{title}</h2>
         <output className={s.ProgressValue}>
-          {value}/{totalValue}
+          {currentValue}/{totalValue}
         </output>
       </div>
       <div className={s.ProgressBar}>
         <div
           className={s.ProgressLine}
-          style={{ width: value / (totalValue / 100) + '%' }}
+          style={{ width: progressLine + '%' }}
         ></div>
       </div>
     </div>

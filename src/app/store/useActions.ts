@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { actions as quizActions } from '../../entities/quiz//model/quizSlice';
+import { actions as quizActions } from '../../entities/questions/model/quizSlice';
 import { useMemo } from 'react';
 import { bindActionCreators } from '@reduxjs/toolkit/react';
 

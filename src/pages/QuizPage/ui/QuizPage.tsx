@@ -16,6 +16,8 @@ export function QuizPage() {
     limit,
   });
 
+  const { quiz } = useQuiz();
+
   return (
     <>
       <div className={s.QuizContainer + ' container'}>
@@ -30,10 +32,11 @@ export function QuizPage() {
           <>
             <Progress
               title={'Вопросы собеседования'}
-              value={1}
-              totalValue={data.fullCount}
+              progressValue={quiz.progressValue}
+              currentValue={quiz.currentQuestion}
+              totalValue={quiz.totalQuestions}
             />
-            <Quiz questions={data.questions} />
+            <Quiz quizData={quiz} />
           </>
         )}
       </div>

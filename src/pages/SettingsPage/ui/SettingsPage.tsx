@@ -4,8 +4,8 @@ import { Button } from '../../../shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { useSelectedFilters } from '../../../shared/hooks/useSelectedFilters';
 import { useActions } from '../../../app/store/useActions';
-import type { QuizParams } from '../../../entities/quiz/model/quizSlice';
 import { specializationsDafault } from '../../../shared/const/const';
+import type { QuizParams } from '../../../entities/questions/model/types';
 
 export function SettingsPage() {
   const navigate = useNavigate();
@@ -13,9 +13,9 @@ export function SettingsPage() {
   const [skills] = useSelectedFilters('skills');
   const [complexity] = useSelectedFilters('complexity');
   const [limit] = useSelectedFilters('limit');
-  const { startQuiz } = useActions();
+  const { setQuizParams } = useActions();
 
-  const beginHandler = () => {
+  const startQuizHandler = () => {
     const quizParams: QuizParams = {
       specializations:
         specializations.length === 0
@@ -26,7 +26,7 @@ export function SettingsPage() {
       limit: limit ? limit[0] : undefined,
     };
 
-    startQuiz(quizParams);
+    setQuizParams(quizParams);
     navigate('/quiz', { replace: true });
   };
 
@@ -36,7 +36,7 @@ export function SettingsPage() {
         <h2>Собеседование</h2>
         <Filters />
         <div className={s.FiltersSectionButton}>
-          <Button title={'Начать →'} clickHandler={beginHandler} />
+          <Button title={'Начать →'} onClick={startQuizHandler} />
         </div>
       </div>
     </section>
