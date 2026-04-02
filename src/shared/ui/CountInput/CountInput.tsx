@@ -1,6 +1,11 @@
 import s from './CountInput.module.sass';
 
-export function CountInput() {
+interface Props {
+  value: string;
+  setValue: (newValue: string) => void;
+}
+
+export function CountInput({ value, setValue }: Props) {
   return (
     <div>
       <input
@@ -9,7 +14,10 @@ export function CountInput() {
         name=""
         min="1"
         max="50"
-        defaultValue={'1'}
+        value={value}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          setValue(event.target.value);
+        }}
       />
     </div>
   );

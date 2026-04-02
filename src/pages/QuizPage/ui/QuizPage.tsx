@@ -4,10 +4,16 @@ import { Progress } from '../../../shared/ui/Progress/Progress';
 import { RequestErrorMessage } from '../../../shared/ui/RequestErrorMessage/RequestErrorMessage';
 import { Skeleton } from '../../../shared/ui/Skeleton/Skeleton';
 import { Quiz } from '../../../widgets/quiz';
+import { useQuiz } from '../../../app/store/useAppSelector';
 
 export function QuizPage() {
+  const { specializations, skills, complexity, limit } = useQuiz();
+
   const { data, isLoading, isError } = useGetQuizQuery({
-    specializations: '11'
+    specializations,
+    skills,
+    complexity,
+    limit,
   });
 
   return (

@@ -47,7 +47,7 @@ export const useSelectedFilters = (
   };
 
   const setSelectedItems = (id: string) => {
-    if (type === 'specializations') {
+    if (type === 'specializations' || type === 'limit') {
       paramsSingleSelect(id);
     } else {
       paramsMultipleSelect(id);
@@ -57,7 +57,7 @@ export const useSelectedFilters = (
   let selectedItems: string[] = [];
   if (selected === null) {
     selectedItems = [];
-  } else if (type === 'skills' || type === 'rate') {
+  } else if (type === 'skills') {
     selectedItems = selected.split(',');
   } else if (type === 'complexity') {
     selectedItems = selected.split(',').map((item) => urlDecode(item));

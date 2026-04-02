@@ -1,19 +1,26 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { specializationsDafault } from '../../../shared/const/const';
+
+export interface QuizParams {
+  specializations: string;
+  skills?: string;
+  complexity?: string;
+  limit?: string;
+}
 
 interface State {
-  quizParams: {
-    specializations: string;
-    skills?: string;
-    complexity?: string;
-    limit?: number;
+  quizParams: QuizParams;
+  quiz: {
     currentQuestion: number;
   };
 }
 
 const initialState: State = {
   quizParams: {
-    specializations: '11',
-    currentQuestion: 1
+    specializations: specializationsDafault,
+  },
+  quiz: {
+    currentQuestion: 1,
   },
 };
 
@@ -21,12 +28,16 @@ export const quizSlice = createSlice({
   name: 'quiz',
   initialState,
   reducers: {
-    setParams: (
+    startQuiz: (state, action: PayloadAction<QuizParams>) => {
+      state.quizParams = action.payload;
+      state.quiz.currentQuestion = 1;
+    },
+    setQuiz: (
       state,
-      action: PayloadAction<{ key: string; value: string | null | number }>
+      action: PayloadAction<{ key: string; value: string | number }>
     ) => {
       const { key, value } = action.payload;
-      state.quizParams = { ...state.quizParams, [key]: value };
+      state.quiz = { ...state.quiz, [key]: value };
     },
   },
 });

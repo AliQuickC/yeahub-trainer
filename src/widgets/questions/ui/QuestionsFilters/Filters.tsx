@@ -6,11 +6,10 @@ import { RequestErrorMessage } from '../../../../shared/ui/RequestErrorMessage/R
 import { SpecializationsFilterList } from '../../../../features/specializations';
 import { SkillsFilterList } from '../../../../features/skills';
 import { ComplexityList } from '../../../../features/complexity';
-import { CountInput } from '../../../../shared/ui/CountInput/CountInput';
 import { useSelectedFilters } from '../../../../shared/hooks/useSelectedFilters';
 import { useEffect } from 'react';
-
-const reactSpecializationId = '11';
+import { Limit } from '../../../../features/limit';
+import { specializationsDafault } from '../../../../shared/const/const';
 
 export function Filters() {
   const [selectedSpecializations, setSelectedSpecializations] =
@@ -20,7 +19,7 @@ export function Filters() {
   const selectedSpecialization = selectedSpecializations[0];
   useEffect(() => {
     if (selectedSpecializations.length === 0) {
-      setSelectedSpecializations(reactSpecializationId);
+      setSelectedSpecializations(specializationsDafault);
     } else {
       clearSelectedSkills();
     }
@@ -73,7 +72,7 @@ export function Filters() {
 
         <div className={s.QuestionCount}>
           <h4>Количество вопросов</h4>
-          <CountInput />
+          <Limit />
         </div>
       </div>
     </div>

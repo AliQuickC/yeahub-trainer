@@ -3,7 +3,7 @@ import type { SpecializationsResponseData } from '../../specializations/model/ty
 
 type ComplexityIds = '1,2,3' | '4,5,6' | '7,8' | '9,10';
 
-export type FiltersType = 'specializations' | 'skills' | 'complexity' | 'rate';
+export type FiltersType = 'specializations' | 'skills' | 'complexity' | 'limit';
 
 export type ComplexityData = { id: ComplexityIds; title: string };
 

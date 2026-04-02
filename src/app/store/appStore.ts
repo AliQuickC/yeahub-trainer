@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit/react';
 import { rootReducer } from './appReducer';
 import { useDispatch } from 'react-redux';
-import baseApi from './baseApi';
+import baseApi from '../baseApi';
 
 const store = configureStore({
   reducer: rootReducer,
