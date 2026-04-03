@@ -1,4 +1,4 @@
-import '../../shared/index.sass';
+import './index.sass';
 import { Header } from '../../widgets/header';
 import { Footer } from '../../widgets/footer';
 import { Outlet } from 'react-router-dom';

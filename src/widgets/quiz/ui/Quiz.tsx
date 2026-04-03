@@ -24,7 +24,7 @@ export function Quiz({
 }: Props) {
   const navigate = useNavigate();
   const [hiddenAnswer, setHiddenAnswer] = useState<boolean>(true);
-  const { changeQuestion, setKhow } = useActions();
+  const { navigateToQuestion, setKhow } = useActions();
 
   const hiddenHandler = () => {
     setHiddenAnswer((value) => !value);
@@ -35,13 +35,13 @@ export function Quiz({
       currentQuestion < totalQuestions &&
       questions[currentQuestion - 1].isKnow !== null
     ) {
-      changeQuestion(currentQuestion + 1);
+      navigateToQuestion(currentQuestion + 1);
     }
   };
 
   const prevQuestionHandler = () => {
     if (currentQuestion > 1) {
-      changeQuestion(currentQuestion - 1);
+      navigateToQuestion(currentQuestion - 1);
     }
   };
 

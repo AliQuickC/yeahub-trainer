@@ -43,11 +43,12 @@ export const quizSlice = createSlice({
       }));
 
       state.quiz.currentQuestion = 1;
+      state.quiz.progressValue = 0;
       state.quiz.totalQuestions = action.payload.fullCount;
       state.quiz.questions = qiuzQuestions;
       state.quizIsStart = true;
     },
-    changeQuestion: (state, action: PayloadAction<number>) => {
+    navigateToQuestion: (state, action: PayloadAction<number>) => {
       state.quiz.currentQuestion = action.payload;
     },
     setKhow: (
