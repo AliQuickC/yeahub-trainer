@@ -57,6 +57,10 @@ export function Quiz({
     navigate('/quiz/new', { replace: true });
   };
 
+  const toRezultHandler = () => {
+    navigate('/rezult', { replace: true });
+  };
+
   return (
     <div className={s.Quiz}>
       <div className={s.NavButtonsWrapper}>
@@ -116,7 +120,7 @@ export function Quiz({
 
       {currentQuestion >= totalQuestions &&
       questions[totalQuestions - 1].isKnow !== null ? (
-        <Button title={'Проверить'} onClick={() => {}} />
+        <Button title={'Проверить'} onClick={toRezultHandler} />
       ) : (
         <Button
           title={'Завершить'}
