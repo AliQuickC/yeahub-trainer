@@ -1,5 +1,5 @@
 import { useQuiz } from '../../../../app/store/useAppSelector';
-import { CompletedQuestion } from '../../../../entities/questions/ui/CompletedQuestion/CompletedQuestion';
+import { RezultInfoQuestion } from '../../../../entities/questions';
 import s from './CompletedQuestions.module.sass';
 
 export function CompletedQuestions() {
@@ -12,7 +12,7 @@ export function CompletedQuestions() {
       </h3>
       <div className={s.QuestionsList}>
         {quiz.questions.map((item) => (
-          <CompletedQuestion key={item.id} question={item} />
+          <RezultInfoQuestion key={item.id} question={item} />
         ))}
       </div>
     </section>

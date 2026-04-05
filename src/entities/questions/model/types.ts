@@ -1,3 +1,6 @@
+import type { SkillsResponseData } from '../../skills';
+import type { SpecializationsResponseData } from '../../specializations';
+
 export type QuestionsResponseData = {
   id: number;
   title: string;
@@ -27,11 +30,12 @@ export type QuizParamsType = {
   limit?: string;
 };
 
-export type QuizQuestion = Pick<
+export type QuizQuestionType = Pick<
   QuestionsResponseData,
   'id' | 'title' | 'shortAnswer'
 > & {
   isKnow: boolean | null;
+  isHiddenAnswer: boolean;
 };
 
 export interface QuizParams {
@@ -41,3 +45,13 @@ export interface QuizParams {
   limit?: string;
 }
 
+type ComplexityIds = '1,2,3' | '4,5,6' | '7,8' | '9,10';
+
+export type FiltersType = 'specializations' | 'skills' | 'complexity' | 'limit';
+
+export type ComplexityData = { id: ComplexityIds; title: string };
+
+export type FilterItemList =
+  | SpecializationsResponseData[]
+  | SkillsResponseData[]
+  | ComplexityData[];

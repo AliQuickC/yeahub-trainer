@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { specializationsDafault } from '../../../shared/const/const';
-import type { QuizParams, QuizQuestion, QuizResponse } from './types';
+import type { QuizParams, QuizQuestionType, QuizResponse } from './types';
 
 interface State {
   quizIsStart: boolean;
@@ -9,7 +9,7 @@ interface State {
     totalQuestions: number;
     currentQuestion: number;
     progressValue: number;
-    questions: QuizQuestion[];
+    questions: QuizQuestionType[];
   };
 }
 
@@ -40,6 +40,7 @@ export const quizSlice = createSlice({
         title: item.title,
         shortAnswer: item.shortAnswer,
         isKnow: null,
+        isHiddenAnswer: true,
       }));
 
       state.quiz.currentQuestion = 1;
@@ -60,6 +61,13 @@ export const quizSlice = createSlice({
       if (action.payload.questionNamber > state.quiz.progressValue) {
         state.quiz.progressValue = action.payload.questionNamber;
       }
+    },
+    setHidden: (
+      state,
+      action: PayloadAction<{ isHiddenAnswer: boolean; questionNamber: number }>
+    ) => {
+      state.quiz.questions[action.payload.questionNamber - 1].isHiddenAnswer =
+        action.payload.isHiddenAnswer;
     },
   },
 });

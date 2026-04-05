@@ -1,9 +1,6 @@
-import type {
-  ComplexityData,
-  FiltersType,
-} from '../../../entities/questions/model/FilterTypes';
+import type { ComplexityData, FiltersType } from '../../../entities/questions';
+import { useUrlSelectedFilters } from '../../../shared/lib/hooks/useUrlSelectedFilters';
 import { FilterGroup } from '../../../shared/ui/FilterGroup/FilterGroup';
-import { useSelectedFilters } from '../../../shared/hooks/useSelectedFilters';
 import { urlCode } from '../../../shared/utility/url-code';
 
 const filterType: FiltersType = 'complexity';
@@ -16,7 +13,7 @@ const data: ComplexityData[] = [
 ];
 
 export function ComplexityList() {
-  const [selectedItems, setSelectedItems] = useSelectedFilters(filterType);
+  const [selectedItems, setSelectedItems] = useUrlSelectedFilters(filterType);
 
   const selectParamHandler = (id: string) => {
     setSelectedItems(urlCode(id));

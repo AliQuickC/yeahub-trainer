@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ExpandButton } from '../SwitchButton/ExpandButton';
 import s from './FilterGroup.module.sass';
-import type { FilterItemList } from '../../../entities/questions/model/FilterTypes';
+import type { FilterItemList } from '../../../entities/questions';
 
 const checkedTitle = 'Посмотреть все';
 const uncheckedTitle = 'Скрыть';

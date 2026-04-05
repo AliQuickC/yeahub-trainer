@@ -1,17 +1,14 @@
 import s from './Quiz.module.sass';
 import { Button } from '../../../shared/ui/Button/Button';
-import type { QuizQuestion } from '../../../entities/questions/model/types';
 import { NavButton } from '../../../shared/ui/NavButton/NavButton';
-import { ExpandButton } from '../../../shared/ui/SwitchButton/ExpandButton';
-import { useState } from 'react';
-import { LikeButton } from '../../../shared/ui/LikeButton/LikeButton';
-import { DislikeIcon, LikeIcon } from '../../../shared/assets';
 import { useActions } from '../../../app/store/useActions';
 import { useNavigate } from 'react-router-dom';
+import { QuizQuestion } from '../../../entities/questions';
+import type { QuizQuestionType } from '../../../entities/questions/model/types';
 
 interface Props {
   quizData: {
-    questions: QuizQuestion[];
+    questions: QuizQuestionType[];
     currentQuestion: number;
     totalQuestions: number;
   };
@@ -23,12 +20,7 @@ export function Quiz({
   quizData: { currentQuestion },
 }: Props) {
   const navigate = useNavigate();
-  const [hiddenAnswer, setHiddenAnswer] = useState<boolean>(true);
-  const { navigateToQuestion, setKhow } = useActions();
-
-  const hiddenHandler = () => {
-    setHiddenAnswer((value) => !value);
-  };
+  const { navigateToQuestion } = useActions();
 
   const nextQuestionHandler = () => {
     if (
@@ -43,14 +35,6 @@ export function Quiz({
     if (currentQuestion > 1) {
       navigateToQuestion(currentQuestion - 1);
     }
-  };
-
-  const notKnowHandler = () => {
-    setKhow({ isKnow: false, questionNamber: currentQuestion });
-  };
-
-  const knowHandler = () => {
-    setKhow({ isKnow: true, questionNamber: currentQuestion });
   };
 
   const exitHandler = () => {
@@ -79,42 +63,10 @@ export function Quiz({
         />
       </div>
 
-      <p className={s.QuestionTitle}>{questions[currentQuestion - 1].title}</p>
-
-      {hiddenAnswer ? null : (
-        <div
-          className={s.Answer}
-          dangerouslySetInnerHTML={{
-            __html: questions[currentQuestion - 1].shortAnswer,
-          }}
-        ></div>
-      )}
-
-      <ExpandButton
-        checkedTitle={'Посмотреть ответ'}
-        uncheckedTitle={'Скрыть ответ'}
-        checked={hiddenAnswer}
-        ExpandHandler={hiddenHandler}
+      <QuizQuestion
+        question={questions[currentQuestion - 1]}
+        currentQuestion={currentQuestion}
       />
-
-      <div className={s.AnswerButtonsWrapper}>
-        {
-          <>
-            <LikeButton
-              title={'Не знаю'}
-              icon={<DislikeIcon />}
-              сhecked={questions[currentQuestion - 1].isKnow === false}
-              onClick={notKnowHandler}
-            />
-            <LikeButton
-              title={'Знаю'}
-              icon={<LikeIcon />}
-              сhecked={questions[currentQuestion - 1].isKnow === true}
-              onClick={knowHandler}
-            />
-          </>
-        }
-      </div>
 
       <hr />
 

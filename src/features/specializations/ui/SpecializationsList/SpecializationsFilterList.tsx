@@ -1,7 +1,7 @@
 import type { SpecializationsResponseData } from '../../../../entities/specializations/model/types';
-import { useSelectedFilters } from '../../../../shared/hooks/useSelectedFilters';
 import { FilterGroup } from '../../../../shared/ui/FilterGroup/FilterGroup';
-import type { FiltersType } from '../../../../entities/questions/model/FilterTypes';
+import { useUrlSelectedFilters } from '../../../../shared/lib/hooks/useUrlSelectedFilters';
+import type { FiltersType } from '../../../../entities/questions';
 
 const filterType: FiltersType = 'specializations';
 
@@ -10,7 +10,7 @@ interface Props {
 }
 export function SpecializationsFilterList({ data }: Props) {
   const [selectedSpecializations, setSelectedSpecializations] =
-    useSelectedFilters(filterType);
+    useUrlSelectedFilters(filterType);
 
   const selectParamHandler = (id: string) => {
     setSelectedSpecializations(id);

@@ -1,8 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
-import { urlDecode } from '../utility/url-code';
-import type { FiltersType } from '../../entities/questions/model/FilterTypes';
+import { urlDecode } from '../../utility/url-code';
+import type { FiltersType } from '../../../entities/questions';
 
-export const useSelectedFilters = (
+export const useUrlSelectedFilters = (
   type: FiltersType
 ): [string[], (id: string) => void, () => void] => {
   const [searchParams, setSearchParams] = useSearchParams();

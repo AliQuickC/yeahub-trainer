@@ -1,12 +1,12 @@
+import s from './RezultInfoQuestion.module.sass';
 import { DislikeIcon, LikeIcon } from '../../../../shared/assets';
-import type { QuizQuestion } from '../../model/types';
-import s from './CompletedQuestion.module.sass';
+import type { QuizQuestionType } from '../../model/types';
 
 interface Props {
-  question: QuizQuestion;
+  question: QuizQuestionType;
 }
 
-export function CompletedQuestion({ question }: Props) {
+export function RezultInfoQuestion({ question }: Props) {
   return (
     <div className={s.CompletedQuestion}>
       <div className={s.CompletedQuestionImage}></div>

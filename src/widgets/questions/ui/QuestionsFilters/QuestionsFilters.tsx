@@ -1,20 +1,20 @@
-import s from './Filters.module.sass';
-import { useGetSpecializationsListQuery } from '../../../../entities/specializations/api/specializationsApi';
-import { useGetSkillsListQuery } from '../../../../entities/skills/api/skillsApi';
+import s from './QuestionsFilters.module.sass';
 import { Loader } from '../../../../shared/ui/Loader/Loader';
 import { RequestErrorMessage } from '../../../../shared/ui/RequestErrorMessage/RequestErrorMessage';
 import { SpecializationsFilterList } from '../../../../features/specializations';
 import { SkillsFilterList } from '../../../../features/skills';
 import { ComplexityList } from '../../../../features/complexity';
-import { useSelectedFilters } from '../../../../shared/hooks/useSelectedFilters';
 import { useEffect } from 'react';
-import { Limit } from '../../../../features/limit';
 import { specializationsDafault } from '../../../../shared/const/const';
+import { QuestionsLimit } from '../../../../features/questions';
+import { useUrlSelectedFilters } from '../../../../shared/lib/hooks/useUrlSelectedFilters';
+import { useGetSpecializationsListQuery } from '../../../../entities/specializations';
+import { useGetSkillsListQuery } from '../../../../entities/skills';
 
-export function Filters() {
+export function QuestionsFilters() {
   const [selectedSpecializations, setSelectedSpecializations] =
-    useSelectedFilters('specializations');
-  const [, , clearSelectedSkills] = useSelectedFilters('skills');
+    useUrlSelectedFilters('specializations');
+  const [, , clearSelectedSkills] = useUrlSelectedFilters('skills');
 
   const selectedSpecialization = selectedSpecializations[0];
   useEffect(() => {
@@ -72,7 +72,7 @@ export function Filters() {
 
         <div className={s.QuestionCount}>
           <h4>Количество вопросов</h4>
-          <Limit />
+          <QuestionsLimit />
         </div>
       </div>
     </div>
