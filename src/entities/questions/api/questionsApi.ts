@@ -20,7 +20,7 @@ export const questionsApi = baseApi.injectEndpoints({
 
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
-          const { data } = await queryFulfilled; // Ждем завершения запроса
+          const { data } = await queryFulfilled;
           dispatch(quizActions.startQuiz(data));
         } catch (error) {
           console.error('Ошибка при получении пользователя:', error);
