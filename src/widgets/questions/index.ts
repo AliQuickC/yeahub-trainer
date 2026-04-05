@@ -1,4 +1,4 @@
-import { CompletedQuestions } from './ui/CompletedQuestions/CompletedQuestions';
+import { RezultQuizList } from './ui/RezultQuizList/RezultQuizList';
 import { QuestionsFilters } from './ui/QuestionsFilters/QuestionsFilters';
 
-export { QuestionsFilters, CompletedQuestions };
+export { QuestionsFilters, RezultQuizList };

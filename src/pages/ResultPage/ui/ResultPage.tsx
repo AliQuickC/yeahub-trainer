@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../shared/ui/Button/Button';
-import { CompletedQuestions } from '../../../widgets/questions';
+import { RezultQuizList } from '../../../widgets/questions';
 
 export function ResultPage() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ export function ResultPage() {
 
   return (
     <>
-      <CompletedQuestions />
+      <RezultQuizList />
       <Button title={'Новое собеседование'} onClick={returnHandler} />
     </>
   );
