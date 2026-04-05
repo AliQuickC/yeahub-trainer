@@ -8,7 +8,9 @@ function BaseLayout() {
     <>
       <Header />
       <main>
-        <Outlet />
+        <div className={'container'}>
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </>

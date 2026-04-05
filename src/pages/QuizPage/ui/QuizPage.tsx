@@ -1,4 +1,3 @@
-import s from './QuizPage.module.sass';
 import { Progress } from '../../../shared/ui/Progress/Progress';
 import { RequestErrorMessage } from '../../../shared/ui/RequestErrorMessage/RequestErrorMessage';
 import { Skeleton } from '../../../shared/ui/Skeleton/Skeleton';
@@ -20,26 +19,24 @@ export function QuizPage() {
 
   return (
     <>
-      <div className={s.QuizContainer + ' container'}>
-        {isLoading ? (
-          <>
-            <Skeleton />
-            <Skeleton style={{ height: '400px' }} />
-          </>
-        ) : isError || !data ? (
-          <RequestErrorMessage />
-        ) : (
-          <>
-            <Progress
-              title={'Вопросы собеседования'}
-              progressValue={quiz.progressValue}
-              currentValue={quiz.currentQuestion}
-              totalValue={quiz.totalQuestions}
-            />
-            <Quiz quizData={quiz} />
-          </>
-        )}
-      </div>
+      {isLoading ? (
+        <>
+          <Skeleton />
+          <Skeleton style={{ height: '400px' }} />
+        </>
+      ) : isError || !data ? (
+        <RequestErrorMessage />
+      ) : (
+        <>
+          <Progress
+            title={'Вопросы собеседования'}
+            progressValue={quiz.progressValue}
+            currentValue={quiz.currentQuestion}
+            totalValue={quiz.totalQuestions}
+          />
+          <Quiz quizData={quiz} />
+        </>
+      )}
     </>
   );
 }

@@ -32,12 +32,10 @@ export function SettingsPage() {
 
   return (
     <section className={s.FiltersSection}>
-      <div className={s.SettingContainer + ' container'}>
-        <h2>Собеседование</h2>
-        <QuestionsFilters />
-        <div className={s.FiltersSectionButton}>
-          <Button title={'Начать →'} onClick={startQuizHandler} />
-        </div>
+      <h2>Собеседование</h2>
+      <QuestionsFilters />
+      <div className={s.StartButton}>
+        <Button title={'Начать →'} onClick={startQuizHandler} />
       </div>
     </section>
   );
