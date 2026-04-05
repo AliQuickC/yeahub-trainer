@@ -5,6 +5,7 @@ import { actions as quizActions } from '../model/quizSlice';
 export const questionsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getQuiz: builder.query<QuizResponse, QuizParamsType>({
+      keepUnusedDataFor: 0,
       query: (params) => {
         const { limit, skills, complexity, specializations } = params || {};
         return {

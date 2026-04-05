@@ -8,12 +8,15 @@ import { useGetQuizQuery } from '../../../entities/questions';
 export function QuizPage() {
   const { specializations, skills, complexity, limit } = useQuiz();
 
-  const { data, isLoading, isError } = useGetQuizQuery({
-    specializations,
-    skills,
-    complexity,
-    limit,
-  });
+  const { data, isLoading, isError } = useGetQuizQuery(
+    {
+      specializations,
+      skills,
+      complexity,
+      limit,
+    },
+    { refetchOnMountOrArgChange: true }
+  );
 
   const { quiz } = useQuiz();
 
