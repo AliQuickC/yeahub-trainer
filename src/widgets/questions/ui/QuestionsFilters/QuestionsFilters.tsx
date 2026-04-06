@@ -42,39 +42,42 @@ export function QuestionsFilters() {
 
   return (
     <div className={s.Filters}>
-      <div className={s.FiltersWraper}>
-        <div className={s.Specializations}>
-          <h4>Выбор специализация</h4>
-          {specializationIsLoading ? (
-            <Loader width="100px" height="70px" />
-          ) : specializationIsError || !specializationsData ? (
-            <RequestErrorMessage />
-          ) : (
-            <ChooseSpecializations data={specializationsData.data} />
-          )}
+      <h2>Собеседование</h2>
+      <div className={s.FiltersWrapper}>
+        <div className={s.FiltersWraper}>
+          <div className={s.Specializations}>
+            <h4>Выбор специализация</h4>
+            {specializationIsLoading ? (
+              <Loader width="100px" height="70px" />
+            ) : specializationIsError || !specializationsData ? (
+              <RequestErrorMessage />
+            ) : (
+              <ChooseSpecializations data={specializationsData.data} />
+            )}
+          </div>
+
+          <div className={s.Skills}>
+            <h4>Категории вопросов</h4>
+            {skillsLoading ? (
+              <Loader width="100px" height="70px" />
+            ) : skillsIsError || !skillsData ? (
+              <RequestErrorMessage />
+            ) : (
+              <ChooseSkills data={skillsData.data} />
+            )}
+          </div>
         </div>
 
-        <div className={s.Skills}>
-          <h4>Категории вопросов</h4>
-          {skillsLoading ? (
-            <Loader width="100px" height="70px" />
-          ) : skillsIsError || !skillsData ? (
-            <RequestErrorMessage />
-          ) : (
-            <ChooseSkills data={skillsData.data} />
-          )}
-        </div>
-      </div>
+        <div className={s.FiltersWraper}>
+          <div className={s.Complexity}>
+            <h4>Уровень сложности</h4>
+            <ChooseComplexity />
+          </div>
 
-      <div className={s.FiltersWraper}>
-        <div className={s.Complexity}>
-          <h4>Уровень сложности</h4>
-          <ChooseComplexity />
-        </div>
-
-        <div className={s.QuestionCount}>
-          <h4>Количество вопросов</h4>
-          <QuestionsLimit />
+          <div className={s.QuestionCount}>
+            <h4>Количество вопросов</h4>
+            <QuestionsLimit />
+          </div>
         </div>
       </div>
     </div>
