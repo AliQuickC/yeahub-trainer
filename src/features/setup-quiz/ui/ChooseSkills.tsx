@@ -8,7 +8,7 @@ const filterType: FiltersType = 'skills';
 interface Props {
   data: SkillsResponseData[];
 }
-export function SkillsFilterList({ data }: Props) {
+export function ChooseSkills({ data }: Props) {
   const [selectedItems, setSelectedItems] = useUrlSelectedFilters(filterType);
 
   const selectParamHandler = (id: string) => {

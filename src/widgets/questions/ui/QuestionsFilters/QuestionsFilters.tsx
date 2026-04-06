@@ -1,15 +1,17 @@
 import s from './QuestionsFilters.module.sass';
 import { Loader } from '../../../../shared/ui/Loader/Loader';
 import { RequestErrorMessage } from '../../../../shared/ui/RequestErrorMessage/RequestErrorMessage';
-import { SpecializationsFilterList } from '../../../../features/specializations';
-import { SkillsFilterList } from '../../../../features/skills';
-import { ComplexityList } from '../../../../features/complexity';
 import { useEffect } from 'react';
 import { specializationsDafault } from '../../../../shared/const/const';
 import { QuestionsLimit } from '../../../../features/questions';
 import { useUrlSelectedFilters } from '../../../../shared/lib/hooks/useUrlSelectedFilters';
 import { useGetSpecializationsListQuery } from '../../../../entities/specializations';
 import { useGetSkillsListQuery } from '../../../../entities/skills';
+import {
+  ChooseComplexity,
+  ChooseSkills,
+  ChooseSpecializations,
+} from '../../../../features/setup-quiz';
 
 export function QuestionsFilters() {
   const [selectedSpecializations, setSelectedSpecializations] =
@@ -48,7 +50,7 @@ export function QuestionsFilters() {
           ) : specializationIsError || !specializationsData ? (
             <RequestErrorMessage />
           ) : (
-            <SpecializationsFilterList data={specializationsData.data} />
+            <ChooseSpecializations data={specializationsData.data} />
           )}
         </div>
 
@@ -59,7 +61,7 @@ export function QuestionsFilters() {
           ) : skillsIsError || !skillsData ? (
             <RequestErrorMessage />
           ) : (
-            <SkillsFilterList data={skillsData.data} />
+            <ChooseSkills data={skillsData.data} />
           )}
         </div>
       </div>
@@ -67,7 +69,7 @@ export function QuestionsFilters() {
       <div className={s.FiltersWraper}>
         <div className={s.Complexity}>
           <h4>Уровень сложности</h4>
-          <ComplexityList />
+          <ChooseComplexity />
         </div>
 
         <div className={s.QuestionCount}>

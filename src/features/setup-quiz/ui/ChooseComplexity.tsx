@@ -12,7 +12,7 @@ const data: ComplexityData[] = [
   { id: '9,10', title: '9-10' },
 ];
 
-export function ComplexityList() {
+export function ChooseComplexity() {
   const [selectedItems, setSelectedItems] = useUrlSelectedFilters(filterType);
 
   const selectParamHandler = (id: string) => {
