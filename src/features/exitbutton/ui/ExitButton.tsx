@@ -1,7 +1,7 @@
-import s from './FinishButton.module.sass';
+import s from './ExitButton.module.sass';
 import { useNavigate } from 'react-router-dom';
 
-export function FinishButton() {
+export function ExitButton() {
   const navigate = useNavigate();
 
   const finishHandler = () => {

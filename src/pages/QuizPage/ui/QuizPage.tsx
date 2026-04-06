@@ -4,6 +4,9 @@ import { Skeleton } from '../../../shared/ui/Skeleton/Skeleton';
 import { Quiz } from '../../../widgets/quiz';
 import { useQuiz } from '../../../app/store/useAppSelector';
 import { useGetQuizQuery } from '../../../entities/questions';
+import { QuizNavButton } from '../../../features/quiz-nav';
+import { RezultButton } from '../../../features/rezultbutton';
+import { ExitButton } from '../../../features/exitbutton';
 
 export function QuizPage() {
   const { specializations, skills, complexity, limit } = useQuiz();
@@ -18,7 +21,8 @@ export function QuizPage() {
     { refetchOnMountOrArgChange: true }
   );
 
-  const { quiz } = useQuiz();
+  const { quiz, progressValue, currentQuestion, totalQuestions, questions } =
+    useQuiz();
 
   return (
     <>
@@ -33,11 +37,23 @@ export function QuizPage() {
         <>
           <Progress
             title={'Вопросы собеседования'}
-            progressValue={quiz.progressValue}
-            currentValue={quiz.currentQuestion}
-            totalValue={quiz.totalQuestions}
+            progressValue={progressValue}
+            currentValue={currentQuestion}
+            totalValue={totalQuestions}
           />
-          <Quiz quizData={quiz} />
+          <Quiz
+            quizData={quiz}
+            prevButton={<QuizNavButton type={'prev'} />}
+            nextButton={<QuizNavButton type={'next'} />}
+            finishButton={
+              currentQuestion >= totalQuestions &&
+              questions[totalQuestions - 1].isKnow !== null ? (
+                <RezultButton />
+              ) : (
+                <ExitButton />
+              )
+            }
+          />
         </>
       )}
     </>

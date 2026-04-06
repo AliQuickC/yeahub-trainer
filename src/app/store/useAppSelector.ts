@@ -8,7 +8,7 @@ export const useQuiz = () => {
     (state) => state.quiz
   );
   const { specializations, skills, complexity, limit } = quizParams;
-  const { totalQuestions, questions, currentQuestion } = quiz;
+  const { totalQuestions, questions, currentQuestion, progressValue } = quiz;
 
   return {
     quizParams,
@@ -21,5 +21,6 @@ export const useQuiz = () => {
     totalQuestions,
     questions,
     currentQuestion,
+    progressValue,
   };
 };

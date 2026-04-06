@@ -1,9 +1,7 @@
 import s from './Quiz.module.sass';
-import { QuizNavButton } from '../../../features/quiz-nav/ui/QuizNavButton';
 import { QuizQuestion } from '../../../entities/questions';
 import type { QuizQuestionType } from '../../../entities/questions/model/types';
-import { FinishButton } from '../../../features/finishbutton';
-import { RezultButton } from '../../../features/rezultbutton';
+import type { JSX } from 'react';
 
 interface Props {
   quizData: {
@@ -11,33 +9,30 @@ interface Props {
     currentQuestion: number;
     totalQuestions: number;
   };
+  prevButton: JSX.Element;
+  nextButton: JSX.Element;
+  finishButton: JSX.Element;
 }
 
 export function Quiz({
-  quizData: { totalQuestions },
   quizData: { questions },
   quizData: { currentQuestion },
+  prevButton,
+  nextButton,
+  finishButton,
 }: Props) {
   return (
     <div className={s.Quiz}>
       <div className={s.NavButtonsWrapper}>
-        <QuizNavButton type={'prev'} />
-        <QuizNavButton type={'next'} />
+        {prevButton}
+        {nextButton}
       </div>
-
       <QuizQuestion
         question={questions[currentQuestion - 1]}
         currentQuestion={currentQuestion}
       />
-
       <hr />
-
-      {currentQuestion >= totalQuestions &&
-      questions[totalQuestions - 1].isKnow !== null ? (
-        <RezultButton />
-      ) : (
-        <FinishButton />
-      )}
+      {finishButton}
     </div>
   );
 }
